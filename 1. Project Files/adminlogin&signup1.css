@@ -1,0 +1,143 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #fff;
+    margin: 0;  
+    padding: 0;   
+}
+
+/* LEFT SIDE: HERO SECTION */
+.hero-side {
+    flex: 1.5;
+    background: linear-gradient(rgba(6, 68, 57, 0.85), rgba(6, 68, 57, 0.85)), url(assets/images/cosbuilding.png);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 8%;
+    color: white;
+}
+
+.hero-side h1 {
+    font-size: 4.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.form-side {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 60px;
+    background: #ffffff;
+    overflow-y: auto;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.welcome-text h2 {
+    font-size: 2rem;
+    color: #111;
+    margin-bottom: 5px;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #f9f9f9;
+}
+
+/* BUTTON STYLING */
+.signin-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    background-color: #0062ff;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.signin-btn:hover {
+    background-color: #004ecc;
+}
+
+.password-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center; 
+}
+
+.password-container input {
+    padding-right: 45px;
+}
+
+
+.eye-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 999;
+    cursor: pointer;
+}
+
+.eye-icon:hover {
+    opacity: 1;
+}
+
+.form-footer {
+    margin-top: auto;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 150px;
+}
+
+.back-home-btn {
+    position: fixed;
+    bottom: 180px;
+    right: 60px;
+    z-index: 100;
+
+    padding: 10px 20px;
+    background: #fff;
+    color: #064439;
+    text-decoration: none;
+    border: 2px solid #064439;
+    border-radius: 50px;
+    font-weight: bold;
+
+    transition: all 0.3s;
+}
+
+.back-home-btn:hover {
+    background: #064439;
+    color: #fff;
+}

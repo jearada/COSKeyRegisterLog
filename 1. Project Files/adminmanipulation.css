@@ -1,0 +1,338 @@
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+
+body { 
+    display: flex; 
+    flex-direction: column; 
+    min-height: 100vh; 
+    background-color: #ffffff; 
+    color: #333; 
+    overflow-x: hidden;
+}
+
+header { 
+    background-color: #064439; 
+    color: white; 
+    padding: 15px 5%; 
+    font-weight: 600; 
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 10;
+}
+
+.main-layout { display: flex; flex: 1; overflow: hidden; }
+
+.container { 
+    flex: 1; 
+    padding: 40px 2%; 
+    overflow-y: auto; 
+    transition: all 0.3s ease; 
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.search-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.search-controls input {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+.btn-search-exec {
+    background-color: #064439;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.btn-search-exec:hover {
+    background-color: #0a6b5a;
+}
+
+.page-title { font-size: 2.2rem; margin: 0; color: #111; }
+
+h2 { 
+    font-size: 1.7rem; 
+    font-weight: 600; 
+    margin-bottom: 20px; 
+    color: #111; 
+    border-left: 5px solid #064439; 
+    padding-left: 15px; 
+}
+
+.table-wrapper { 
+    width: 100%; 
+    margin-top: 10px; 
+    animation: fadeIn 0.4s ease;
+    overflow-x: auto;
+}
+
+table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    table-layout: fixed;
+}
+
+th { 
+    text-align: left; 
+    padding: 12px 10px; 
+    font-size: 0.75rem; 
+    font-weight: 700; 
+    text-transform: uppercase; 
+    color: #111; 
+    border-bottom: 2px solid #eee;
+    background: #fff;
+}
+
+td { 
+    padding: 12px 10px; 
+    font-size: 0.9rem; 
+    color: #444; 
+    border-bottom: 1px solid #f0f0f0; 
+    vertical-align: middle;
+}
+
+.cell-content {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+tr:hover { background-color: #f9f9f9; }
+
+.action-cell {
+    display: flex !important; 
+    flex-direction: row;      
+    align-items: center;
+    gap: 8px;                 
+    white-space: nowrap;
+}
+
+.btn-action {
+    flex: 1;                  
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.1s, opacity 0.2s;
+    text-align: center;
+}
+
+.edit-link { background-color: #007bff; }
+.delete-link { background-color: #dc3545; }
+.btn-action:hover { opacity: 0.8; transform: translateY(-1px); }
+
+.side-nav {
+    width: 250px;
+    background-color: #fff;
+    border-left: 1px solid #eef0f2;
+    padding: 40px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.side-nav h4 { font-size: 0.75rem; text-transform: uppercase; color: #999; margin-bottom: 5px; letter-spacing: 1px; }
+
+.filter-option { position: relative; cursor: pointer; width: 100%; }
+.filter-option input { position: absolute; opacity: 0; }
+
+.filter-label {
+    display: block;
+    padding: 14px;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #555;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.filter-option input:checked + .filter-label {
+    background-color: #064439;
+    color: white;
+    border-color: #064439;
+    box-shadow: 0 4px 10px rgba(6, 68, 57, 0.2);
+}
+
+#addRoomForm {
+    margin-top: 5px;
+    padding: 15px;
+    background: #f1f9f8;
+    border-radius: 10px;
+    border: 1px solid #d1e7e4;
+}
+
+.room-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+.submit-room-btn {
+    width: 100%;
+    background: #064439;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* MODAL STYLING */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none; /* Changed via JS to flex */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(3px);
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    width: 700px;
+    max-width: 90%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    max-height: 95vh;
+    overflow-y: auto;
+}
+
+/* HORIZONTAL ALIGNMENT FOR MODAL INPUTS */
+.horizontal-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Force 2 columns */
+    gap: 15px 25px;
+    margin-top: 15px;
+}
+
+.horizontal-grid div {
+    display: flex;
+    flex-direction: column;
+}
+
+.horizontal-grid label {
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #064439;
+}
+
+.horizontal-grid input, 
+.horizontal-grid select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* MODAL BUTTONS */
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.btn-save,
+.btn-cancel {
+    min-width: 120px;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+}
+
+/* SAVE BUTTON */
+.btn-save {
+    background: #28a745;
+}
+
+/* CANCEL BUTTON */
+.btn-cancel {
+    background: #6c757d;
+}
+
+/* TABLE SECTION TOGGLE */
+.table-section {
+    display: none;
+}
+
+.table-section.active {
+    display: block;
+}
+
+/* BACK BUTTON */
+.back-home-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 280px;
+    z-index: 100;
+
+    padding: 10px 20px;
+    background: #fff;
+    color: #064439;
+    text-decoration: none;
+    border: 2px solid #064439;
+    border-radius: 50px;
+    font-weight: bold;
+
+    transition: all 0.3s;
+}
+
+.back-home-btn:hover {
+    background: #064439;
+    color: #fff;
+}
+
+/* FOOTER */
+footer {
+    background-color: #1a1a1a;
+    color: #666;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.8rem;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
